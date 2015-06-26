@@ -36,6 +36,35 @@ function actOnJSON(input) {
 	return JSON;
 }
 
+var addDotsNum = 0;
+
+function rmDots () {
+	a = document.getElementById('spinnerText');
+	a.textContent = 'Loading';
+}
+
+function addDots () {
+
+setTimeout(function() {
+
+	load = document.getElementById('spinnerText');
+	loadText = load.textContent;
+
+	load.textContent += ' .';
+
+	addDotsNum++;
+	if (addDotsNum < 4) {
+		addDots();
+	}
+	else {
+		rmDots();
+		addDots();
+		addDotsNum = 0;
+	}
+
+}, 700);
+
+}
 
 var spinHideO = 64;
 
@@ -89,7 +118,7 @@ var AJAXcountries = function () {
 			}
 		}
 		else if (xmlhttp.readyState == 1){
-			console.log('300');
+			addDots();
 		}
 	};
 

@@ -16,6 +16,10 @@ $spinner-size: 4rem;
 
 .spinner-text {
   position: relative;
+  width: 500%;
+  left: -200%;
+  display: block;
+  text-align: center;
   top: 1rem;
   font-family: $mono;
   transition: all 400ms ease;

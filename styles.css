@@ -3,7 +3,8 @@ body {
   font-family: sans-serif; }
 
 body {
-  font-family: "PT Sans", sans-serif; }
+  font-family: "PT Sans", sans-serif;
+  line-height: 143%; }
 
 .spinner-container {
   position: absolute;
@@ -16,6 +17,10 @@ body {
 
 .spinner-text {
   position: relative;
+  width: 500%;
+  left: -200%;
+  display: block;
+  text-align: center;
   top: 1rem;
   font-family: "PT Mono", monospace;
   transition: all 400ms ease; }

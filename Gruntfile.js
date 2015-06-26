@@ -1,5 +1,10 @@
 module.exports = function(grunt) {
 
+	// Time Grunt
+	require('time-grunt')(grunt);
+	// Jit Grunt
+	require('jit-grunt')(grunt);
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
@@ -47,10 +52,10 @@ module.exports = function(grunt) {
 	});
 
 	// register tasks
-	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-contrib-watch');
-	grunt.loadNpmTasks('grunt-sass');
+	//grunt.loadNpmTasks('grunt-contrib-uglify');
+	//grunt.loadNpmTasks('grunt-contrib-connect');
+	//grunt.loadNpmTasks('grunt-contrib-watch');
+	//grunt.loadNpmTasks('grunt-sass');
 
 	// add some tasks
 	grunt.registerTask('default', ['sass','uglify','connect','watch']);
