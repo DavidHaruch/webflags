@@ -28,26 +28,48 @@ module.exports = function(grunt) {
 			}
 		},
 
+		autoprefixer: {
+			options: {
+				// Task-specific options go here.
+				browsers: ['last 2 versions']
+			},
+			single_file: {
+				src: 'styles.css',
+				dest: 'styles.prefix.css',
+			},
+		},
+
+		cssmin: {
+  			options: {
+				shorthandCompacting: false,
+				roundingPrecision: -1
+  			},
+  			target: {
+				files: {
+	  				'styles.min.css': 'styles.prefix.css'
+				}
+  			}
+		},
+
 		connect: {
-    	server: {
-      	options: {
-        	port: 9001,
-        	base: './',
-      	}
-    	}
-  	},
+			server: {
+				options: {
+					port: 9001,
+					base: './',
+				}
+			}
+		},
 
-  	watch: {
-  		sass: {
-    		files: ['sass/*.scss'],
-    		tasks: ['sass'],
-    	},
-    	js: {
-    		files: ['js/dev/*.js'],
-    		tasks: ['uglify:js'],
-    	}
-  	},
-
+		watch: {
+			sass: {
+				files: ['sass/*.scss'],
+				tasks: ['sass','autoprefixer','cssmin'],
+			},
+			js: {
+				files: ['js/dev/*.js'],
+				tasks: ['uglify:js'],
+			}
+		},
 
 	});
 
@@ -56,8 +78,9 @@ module.exports = function(grunt) {
 	//grunt.loadNpmTasks('grunt-contrib-connect');
 	//grunt.loadNpmTasks('grunt-contrib-watch');
 	//grunt.loadNpmTasks('grunt-sass');
+	//grunt.loadNpmTasks('grunt-autoprefixer');
 
 	// add some tasks
-	grunt.registerTask('default', ['sass','uglify','connect','watch']);
+	grunt.registerTask('default', ['sass','uglify','autoprefixer','cssmin','connect','watch']);
 
 };

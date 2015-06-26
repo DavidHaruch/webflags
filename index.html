@@ -6,11 +6,12 @@
 	<meta charset="UTF-8">
 	<title>Web Flags Project</title>
 	<!-- &text=Loading will make google fonts only send the characters L,o,a,etc. -->
-	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Mono&text=Loading.' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" href="styles.css">
+	<link href='http://fonts.googleapis.com/css?family=PT+Mono&text=Loading.' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="styles.min.css">
 
 	<!--[if IE 8]>
-		<p>Welcome to Internet Explorer 8.</p>
+		<p>Welcome to Internet Explorer 8, your browser is bad, try to upgrade to an open source, standard following browser such as Firefox or Chromium(Chrome)</p>
 	<![endif]-->
 
 </head>
@@ -28,12 +29,20 @@
 		<span id="spinnerText" class="spinner-text">Loading</span>
 	</div>
 
+	<header class="header" id="header">
+		
+	</header>
+
 	<main id="main" class="main">
 		
 	</main>
 
 </body>
 
+
+<!-- md5 script for wikipedia url parsing -->
+<!-- more info in js/dev/mainScripts.js:~26 -->
+<script src="lib/md5.min.js"></script>
 <script src="js/scripts.min.js"></script>
 
 </html>

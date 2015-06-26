@@ -4,7 +4,13 @@ body {
 
 body {
   font-family: "PT Sans", sans-serif;
-  line-height: 143%; }
+  line-height: 145%; }
+
+.svgFlag {
+  width: 50%;
+  height: auto;
+  display: block;
+  border: 1px solid #ccc; }
 
 .spinner-container {
   position: absolute;

@@ -5,5 +5,12 @@ $space: 1rem;
 
 body {
 	font-family: $sans;
-	line-height: 143%;
+	line-height: 145%;
+}
+
+.svgFlag {
+	width: 50%;
+	height: auto;
+	display: block;
+	border: 1px solid #ccc;
 }
