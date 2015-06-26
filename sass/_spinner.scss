@@ -1,0 +1,53 @@
+// Here is where the magic happens
+
+$offset: 187;
+
+$spinner-size: 4rem;
+
+.spinner-container {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  margin-top: -$spinner-size/2;
+  margin-left: -$spinner-size/2;
+  width: $spinner-size;
+  height: $spinner-size;
+}
+
+.spinner-text {
+  position: relative;
+  top: 1rem;
+  font-family: $mono;
+  transition: all 400ms ease;
+}
+
+.spinner {
+  animation: rotator 1.4s linear infinite;
+}
+
+@keyframes rotator {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(270deg); }
+}
+
+.spinner-path {
+  transition: all 400ms ease;
+  stroke-dasharray: $offset;
+  stroke-dashoffset: 0;
+  transform-origin: center;
+  stroke: #4285F4;
+  animation: dash 1.4s ease-in-out infinite, 
+    
+}
+
+@keyframes dash {
+ 0% { stroke-dashoffset: $offset; }
+ 50% {
+   stroke-dashoffset: $offset/4;
+   transform:rotate(135deg);
+ }
+ 100% {
+   stroke-dashoffset: $offset;
+   transform:rotate(450deg);
+ }
+}
