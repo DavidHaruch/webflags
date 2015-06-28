@@ -1,0 +1,15 @@
+.header {
+	display: block;
+	background-color: $blue;
+	color: #fff;
+	&::after {
+		display: block;
+		width: 100%;
+		height: $space;
+		content: ' ';
+		background-color: $blue-light10;
+	}
+	h2 {
+		font-weight: 500;
+	}
+}

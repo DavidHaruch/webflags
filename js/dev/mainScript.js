@@ -38,23 +38,57 @@ var removeElementNow = function(elemID){
 
 function imgMd5 (countryName) {
 
-	switch (countryName) {
-		case "United Arab Emirates":
-			name = "the United Arab Emirates";
-			break;
+// 'the'
+needthe_include = [
+	'United',
+	'French Southern',
+	'Czech',
+	'Dominican',
+	'Marshall',
+	'Mariana',
+	'Central',
+	'Cook Islands',
+	'Cayman',
+	'Faroe Islands',
+	'Falkland',
+	'Indian'
+];
 
+for (j=0;j<needthe_include.length;j++) {
+	if ( countryName.includes(needthe_include[j]) ) {
+		countryName = 'the ' + countryName;
 	}
+}
+needthe_name = [
+	'Bahamas',
+	'Netherlands',
+	'Philippines',
+	'Turks and Caicos Islands',
+	'Republic of the Congo',
+	'Comoros'
+];
+for (k=0;k<needthe_name.length;k++) {
+	if (countryName == needthe_name[k]) {
+		countryName = 'the ' + countryName;
+	}
+}
+needThe_name = [
+];
+
+	var find = ' ';
+	var spaceRegEx = new RegExp(find, 'g');
+
+	countryName = countryName.replace(spaceRegEx, '_');
+
 
 	svg = new Image();
 	wikipediaPageUrl = 'http://wikipedia.org/wiki/Flag_of_'+ countryName +'#/media/File:Flag_of_'+ countryName +'.svg';
 	wikipediaBaseFileUrl = 'Flag_of_'+ countryName +'.svg';
 	fileUrlMd5 = md5(wikipediaBaseFileUrl);
-	console.log(fileUrlMd5);
+
 	wikiMdSlash1 = fileUrlMd5.charAt(0);
 	wikiMdSlash2 = fileUrlMd5.substring(0,2);
-	console.log(wikiMdSlash1);
-	console.log(wikiMdSlash2);
-	// svg.src = 'http://wikipedia.org/wiki/Flag_of_'+name+'#/media/File:Flag_of_'+name+'.svg';
+
 	finalFileName = 'http://upload.wikimedia.org/wikipedia/commons/'+ wikiMdSlash1 +'/'+ wikiMdSlash2 +'/Flag_of_'+ countryName +'.svg';
 
 	svg.src = 'http://upload.wikimedia.org/wikipedia/commons/'+ wikiMdSlash1 +'/'+ wikiMdSlash2 +'/Flag_of_'+ countryName +'.svg';
@@ -164,7 +198,7 @@ var AJAXcountries = function () {
 			}
 		}
 		else if (xmlhttp.readyState == 1){
-			addDots();console.log('removed spinner');
+			addDots();
 		}
 	};
 
@@ -174,33 +208,3 @@ var AJAXcountries = function () {
 };
 
 AJAXcountries();
-
-var AJAXimages = function (imageURL) {
-var xmlhttp2;
-	// add a new request, IE7+
-	xmlhttp2 = new XMLHttpRequest();
-
-	// when its ready state changes do this stuff
-	xmlhttp2.onreadystatechange = function() {
-		if (xmlhttp2.readyState == XMLHttpRequest.DONE ) {
-			if(xmlhttp2.status == 200){
-				// sucess code goes here
-			}
-			else if(xmlhttp2.status == 400) {
-				// fail code goes here
-				alert('There was an error 400');
-			}
-			else {
-				// unrecognised fail code goes here
-				alert('something else other than 200 was returned');
-			}
-		}
-		else if (xmlhttp2.readyState == 1){
-			
-		}
-	};
-
-	// actually do the thing
-	xmlhttp.open("GET", "data/countries.min.json", true);
-	xmlhttp.send();	
-};

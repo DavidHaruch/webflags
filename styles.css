@@ -7,10 +7,13 @@ body {
   line-height: 145%; }
 
 .svgFlag {
-  width: 50%;
+  width: 20%;
   height: auto;
   display: block;
   border: 1px solid #ccc; }
+
+.wrapper {
+  padding: 3rem; }
 
 .spinner-container {
   position: absolute;
@@ -57,3 +60,16 @@ body {
   100% {
     stroke-dashoffset: 187;
     transform: rotate(450deg); } }
+
+.header {
+  display: block;
+  background-color: #3F51B5;
+  color: #fff; }
+  .header::after {
+    display: block;
+    width: 100%;
+    height: 1rem;
+    content: ' ';
+    background-color: #606fc7; }
+  .header h2 {
+    font-weight: 500; }

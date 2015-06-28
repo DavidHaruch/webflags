@@ -3,14 +3,22 @@ $mono: "PT Mono", monospace;
 
 $space: 1rem;
 
+$blue: #3F51B5;
+$blue-light10: lighten($blue,10%);
+$blue-dark10:  darken($blue,10%);
+
 body {
 	font-family: $sans;
 	line-height: 145%;
 }
 
 .svgFlag {
-	width: 50%;
+	width: 20%;
 	height: auto;
 	display: block;
 	border: 1px solid #ccc;
+}
+
+.wrapper {
+	padding: $space*3;
 }
