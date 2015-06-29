@@ -33,10 +33,36 @@ var removeElementNow = function(elemID){
 //   1ST THEN 1ST AND 2ND OF THE HASH
 // 
 //   WHY CANT THE WORLD JUST USE LINUX AND MAKE MY STUPID FLAG PROJECT EASIER!!!!
+//
+//   /rant
 // 
 // This will just get minified out, but if anyone sees this, hi! enjoy my rant!
 
 function imgMd5 (countryName) {
+
+// add in order of "NAME", "NAME OF COUNTRY OF FLAG TO REPLACE WITH",
+need_replace = [
+	'Bouvet Island', 'Norway',
+	'Guadeloupe', 'France',
+	'Isle of Man', 'Isle of Mann',
+	'Timor-Leste', 'East Timor',
+	'Mayotte', 'Mayotte (local)',
+	'Saint Martin', 'France',
+	'South Georgia', 'South Georgia and the South Sandwich Islands',
+	'Saint Pierre and Miquelon', 'France',
+	'Svalbard and Jan Mayen', 'Norway',
+	'Heard Island and McDonald Islands', 'Australia',
+	'United States Minor Outlying Islands', 'United States',
+	'China', "People's Republic of China",
+	'Åland', 'Åland',
+	'Micronesia', 'Federated States of Micronesia',
+];
+
+for (j=0;j<need_replace.length;j++) {
+	if (j%2 === 0 && countryName == need_replace[j]) {
+		countryName = need_replace[j+1];
+	}
+}
 
 // 'the'
 needthe_include = [
@@ -51,7 +77,13 @@ needthe_include = [
 	'Cayman',
 	'Faroe Islands',
 	'Falkland',
-	'Indian'
+	'Indian',
+	'Solomon',
+	'Isle of Mann',
+	'Pitcairn',
+	'Vatican',
+	'China',
+	'Micronesia',
 ];
 
 for (j=0;j<needthe_include.length;j++) {
@@ -67,31 +99,63 @@ needthe_name = [
 	'Republic of the Congo',
 	'Comoros'
 ];
-for (k=0;k<needthe_name.length;k++) {
-	if (countryName == needthe_name[k]) {
+for (j=0;j<needthe_name.length;j++) {
+	if (countryName == needthe_name[j]) {
 		countryName = 'the ' + countryName;
 	}
 }
+
 needThe_name = [
+	'Gambia'
 ];
+
+for (j=0;j<needThe_name.length;j++) {
+	if (countryName == needThe_name[j]) {
+		countryName = 'The ' + countryName;
+	}
+}
+
+///////////////////////////////////////////////////////////////
+
+function fixURL (input) {
+	return encodeURIComponent(input);
+}
+function fixedEncodeURIComponent (str) {
+  return encodeURIComponent(str).replace(/[!'()*]/g, function(c) {
+    return '%' + c.charCodeAt(0).toString(16);
+  });
+}
 
 	var find = ' ';
 	var spaceRegEx = new RegExp(find, 'g');
 
 	countryName = countryName.replace(spaceRegEx, '_');
 
+	if (countryName.includes("China")) {
+		countryName = fixURL(countryName);
+	}
 
 	svg = new Image();
 	wikipediaPageUrl = 'http://wikipedia.org/wiki/Flag_of_'+ countryName +'#/media/File:Flag_of_'+ countryName +'.svg';
 	wikipediaBaseFileUrl = 'Flag_of_'+ countryName +'.svg';
 	fileUrlMd5 = md5(wikipediaBaseFileUrl);
 
+
 	wikiMdSlash1 = fileUrlMd5.charAt(0);
 	wikiMdSlash2 = fileUrlMd5.substring(0,2);
 
 	finalFileName = 'http://upload.wikimedia.org/wikipedia/commons/'+ wikiMdSlash1 +'/'+ wikiMdSlash2 +'/Flag_of_'+ countryName +'.svg';
 
-	svg.src = 'http://upload.wikimedia.org/wikipedia/commons/'+ wikiMdSlash1 +'/'+ wikiMdSlash2 +'/Flag_of_'+ countryName +'.svg';
+	svg.src = finalFileName;
+
+	// These are for the ones I cant seem to fix programaticaly
+	// this needs to be fixed
+	if (countryName.includes("Åland")) {
+		svg.src = "http://upload.wikimedia.org/wikipedia/commons/5/52/Flag_of_%C3%85land.svg";
+	}
+	if (countryName.includes("Cocos")) {
+		svg.src = "http://upload.wikimedia.org/wikipedia/commons/7/74/Flag_of_the_Cocos_%28Keeling%29_Islands.svg";	
+	}
 
 	svg.className += 'svgFlag';
 
