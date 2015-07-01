@@ -2,6 +2,8 @@
 // uses ELEM.parentNode.removeChild(ELEM)
 // Works with class, tag, id, and already defined varibles
 
+var elemArr = [];
+
 var removeElementNow = function(elemID){
 	if (document.getElementById(''+ elemID +'') === true) {
 		cwi = document.getElementById('elemID');	
@@ -82,6 +84,7 @@ needthe_include = [
 	'Isle of Mann',
 	'Pitcairn',
 	'Vatican',
+	'British Virgin',
 	'China',
 	'Micronesia',
 ];
@@ -150,16 +153,34 @@ function fixedEncodeURIComponent (str) {
 
 	// These are for the ones I cant seem to fix programaticaly
 	// this needs to be fixed
+	// this is equivalent to absolute file paths AKA - VERY BAD
 	if (countryName.includes("Åland")) {
 		svg.src = "http://upload.wikimedia.org/wikipedia/commons/5/52/Flag_of_%C3%85land.svg";
 	}
 	if (countryName.includes("Cocos")) {
 		svg.src = "http://upload.wikimedia.org/wikipedia/commons/7/74/Flag_of_the_Cocos_%28Keeling%29_Islands.svg";	
 	}
+	if (countryName.includes("Taiwan")) {
+		svg.src = "http://upload.wikimedia.org/wikipedia/commons/7/72/Flag_of_the_Republic_of_China.svg";
+	}
+	if (countryName.includes("DR")) {
+		svg.src = "http://upload.wikimedia.org/wikipedia/commons/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg";
+	}
+	if (countryName.includes("Ivory")) {
+		svg.src = "https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_C%C3%B4te_d%27Ivoire.svg";
+	}
+	if (countryName.includes("Barthélemy")) {
+		svg.src = "https://upload.wikimedia.org/wikipedia/commons/d/df/Flag_of_Saint_Barthelemy_%28local%29.svg";
+	}
+	if (countryName.includes("São")) {
+		svg.src = "https://upload.wikimedia.org/wikipedia/commons/4/4f/Flag_of_Sao_Tome_and_Principe.svg";
+	}
+	////
 
 	svg.className += 'svgFlag';
 
 	document.getElementById('nameDisp' + i).appendChild(svg);
+	elemArr.push('nameDisp' + i);
 }
 
 function actOnJSON(input) {
@@ -175,7 +196,6 @@ function actOnJSON(input) {
 		document.getElementById('main').appendChild(nameDisp);
 
 		imgMd5(name);
-
 	}
 	return JSON;
 }
