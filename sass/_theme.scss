@@ -8,6 +8,7 @@ $font-size: 16px;
 $blue: #3F51B5;
 $blue-light10: lighten($blue,10%);
 $blue-dark10:  darken($blue,10%);
+$blue-dark20:  darken($blue,20%);
 
 body {
 	font-family: $sans;
@@ -35,6 +36,10 @@ h3 {font-size: 1.999em;}
 
 h4 {font-size: 1.414em;}
 
+.wrapper {
+	padding: $space*3;
+}
+
 .svgFlag {
 	width: 20%;
 	height: auto;
@@ -42,15 +47,88 @@ h4 {font-size: 1.414em;}
 	border: 1px solid #ccc;
 }
 
-.button--search {
-	height: 3rem;
-	width: 3rem;
-	object {
-		text-align: center;
-		position: relative;
+// search
+
+.search {
+}
+
+// end search
+
+// buttons
+
+.button {
+
+	color: #fff;
+	background-color: $blue;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+    position: relative;
+	padding: $space;
+	margin: 0 $space/2;
+
+	text-transform: uppercase;
+	font-size: $space;
+
+	overflow: hidden;
+	z-index: 2;
+
+	transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.2s;
+    
+	&:active {
+		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+		transition-delay: 0s;
 	}
 }
 
-.wrapper {
-	padding: $space*3;
+.button--pressed {
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+	transition-delay: 0s;
 }
+
+.button-content {
+	z-index: 0;
+}
+
+.ripple {
+	position: absolute;
+	z-index: -1;
+	background-color: $blue-light10;
+	border-radius: 50%;
+	display: inline-block;
+	transform: scale(0);
+	transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+// end buttons
+
+// tooltips
+
+.tooltip-content {
+	background-color: $blue-dark20;
+	color: #fff;
+	font-size: 14px;
+	display: inline-block;
+	font-weight: 700;
+	text-align: center;	
+	padding: $space/4 $space/2;
+	border-radius: 0.3rem;
+}
+
+.tooltip--up {
+	&::before {
+		display: block;
+		position: relative;
+		text-align: center;
+		margin-left: 2.5rem;
+		content: ' ';
+		width: 0;
+		height: 0;
+		border-left: 0.5em solid #fff;
+		border-right: 0.5em solid #fff;
+		border-bottom: 0.5em solid $blue-dark20;
+	}
+}
+
+// end tooltips
