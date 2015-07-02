@@ -21,8 +21,7 @@ var hideRipple = function (del) {
 };
 
 for (i=0;i<buttons.length;i++) {
-	console.log(buttons[i]);
-
+	
 	buttonElem = buttons[i];
 
 	ripple = document.createElement('span');

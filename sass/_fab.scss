@@ -1,0 +1,33 @@
+// to top
+.fab {
+	position: fixed;
+	bottom: $space;
+	right: $space;
+	width: $space*4;
+	height: $space*4;
+	border-radius: 50%;
+	background-color: $purple-light10;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+
+	transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+	transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    // transition-delay: 0.2s;
+
+    cursor: pointer;
+
+	transform: scale(0) rotate(-180deg);
+
+    svg {
+    	cursor: pointer;
+    	width: 75%;
+    	height: 75%;
+    	margin: 12.5%;
+    }
+	&:active {
+		box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+		transition-delay: 0s;
+
+	}
+}
+
+// end to top

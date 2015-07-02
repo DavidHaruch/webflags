@@ -51,7 +51,9 @@ inputTag.addEventListener('mouseenter', function(e){
 });
 
 
-// This uses .includes, only supported in new firefox and chrome, but it is a standard for es6
+// This uses .includes, only supported in very new firefox and chrome, but it is a standard for es6
+
+var scrollDelay = 500;
 
 var search = function (query) {
 
@@ -64,16 +66,24 @@ var search = function (query) {
 	for (j=0;j<elemArr.length;j++) {
 		elem = document.getElementById(elemArr[j]);
 		elemText = elem.textContent;
-		if (elemText.includes(query)) {
+		if (elemText.indexOf(query) !== -1) {
 			console.log(elemText);
 			arr.push(elemText);
+			if (arr.length <= 1) {
+				// elem.scrollIntoView();
+				// setTimeout(function(){
+					elem.scrollIntoView();
+				// }, scrollDelay);
+			}
 		}
 		else if (!elemText.includes(query)) {
 			console.log("nope");
 		}
 		else if (query === elem.textContent) {
 			console.log(elem.textContent);
-			// elem.scrollIntoView();
+			// setTimeout(function(){
+				elem.scrollIntoView();
+			// }, scrollDelay);
 		}
 	}
 	// if there are more than 1 option

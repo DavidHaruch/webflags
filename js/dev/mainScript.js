@@ -175,6 +175,9 @@ function fixedEncodeURIComponent (str) {
 	if (countryName.includes("São")) {
 		svg.src = "https://upload.wikimedia.org/wikipedia/commons/4/4f/Flag_of_Sao_Tome_and_Principe.svg";
 	}
+	if (countryName.includes("Sahara")) {
+		svg.src = "https://upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Morocco.svg";
+	}
 	////
 
 	svg.className += 'svgFlag';
@@ -204,7 +207,9 @@ var addDotsNum = 0;
 
 function rmDots () {
 	a = document.getElementById('spinnerText');
-	a.textContent = 'Loading';
+	if (a) {
+		a.textContent = 'Loading';
+	}
 }
 
 function addDots () {
@@ -212,6 +217,7 @@ function addDots () {
 setTimeout(function() {
 
 	load = document.getElementById('spinnerText');
+	if (load) {
 	loadText = load.textContent;
 
 	load.textContent += ' .';
@@ -224,6 +230,7 @@ setTimeout(function() {
 		rmDots();
 		addDots();
 		addDotsNum = 0;
+	}
 	}
 
 }, 700);
@@ -244,11 +251,8 @@ setTimeout(function() {
 		SpinLoop();
 	}
 	else {
-		// spin.parentNode.removeChild(spin);
 		removeElementNow(spin);
-		// spinText.parentNode.removeChild(spinText);
 		removeElementNow(spinText);
-		// console.log('removed spinner');
 	}
 }, 10);
 
