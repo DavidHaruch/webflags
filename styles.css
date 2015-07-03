@@ -13,30 +13,25 @@ button {
 body {
   font-family: "PT Sans", sans-serif;
   font-size: 16px;
-  line-height: 145%; }
+  line-height: 145%;
+  background-color: #eee; }
 
 p {
   margin-bottom: 1.3em; }
 
-h1, h2, h3, h4 {
-  margin: 1.414em 0 0.5em;
-  line-height: 1.2; }
-
-h1 {
-  margin-top: 0;
-  font-size: 3.998em; }
-
-h2 {
-  font-size: 2.827em; }
-
-h3 {
-  font-size: 1.999em; }
-
-h4 {
-  font-size: 1.414em; }
+h1, h2, h3, h4, h5, h6 {
+  margin: 0; }
 
 .wrapper {
   padding: 3rem; }
+
+.clearfloat {
+  clear: both; }
+
+@media (min-width: 800px) {
+  .main {
+    width: 50%;
+    margin: 0 25%; } }
 
 .svgFlag {
   width: 100%;
@@ -44,31 +39,25 @@ h4 {
   display: block;
   border: 1px solid #ccc; }
 
-.nameDisp {
-  width: 20%;
-  margin-right: 5%;
-  margin-bottom: 5%;
-  display: inline-block; }
-
-@media (max-width: 800px) {
-  .nameDisp {
-    width: 100%;
-    margin-right: 0;
-    display: block; }
-  .svgFlag {
-    width: 97.5%; }
-  .wrapper {
-    padding: 1rem; }
-  .search {
-    margin-bottom: 1rem; }
-    .search .button {
-      display: block;
-      text-align: center;
-      margin: 0;
-      margin-top: 1rem; } }
+.card {
+  margin-bottom: 4rem;
+  display: block;
+  background-color: #fff;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 4px; }
+  .card img {
+    padding: 0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px; }
+  .card > * {
+    padding: 4rem; }
 
 .search {
   margin-bottom: 4rem; }
+
+.search-input {
+  font-size: 1rem;
+  margin: 1rem 0; }
 
 .button {
   color: #fff;
@@ -88,6 +77,9 @@ h4 {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
     transition-delay: 0s; }
 
+.button-search {
+  float: right; }
+
 .button--pressed {
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
   transition-delay: 0s; }
@@ -102,10 +94,10 @@ h4 {
   border-radius: 50%;
   display: inline-block;
   transform: scale(0);
-  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
 
 .tooltip-content {
-  background-color: #252f69;
+  background-color: #616161;
   color: #fff;
   font-size: 14px;
   display: inline-block;
@@ -114,17 +106,14 @@ h4 {
   padding: 0.25rem 0.5rem;
   border-radius: 0.3rem; }
 
-.tooltip--up::before {
-  display: block;
-  position: relative;
-  text-align: center;
-  margin-left: 2.5rem;
-  content: ' ';
-  width: 0;
-  height: 0;
-  border-left: 0.5em solid #fff;
-  border-right: 0.5em solid #fff;
-  border-bottom: 0.5em solid #252f69; }
+@media (max-width: 800px) {
+  .card {
+    width: 100%;
+    margin-bottom: 2rem; }
+    .card > * {
+      padding: 1rem; }
+  .wrapper {
+    padding: 1rem; } }
 
 .spinner-container {
   position: absolute;

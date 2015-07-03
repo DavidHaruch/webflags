@@ -17,30 +17,46 @@ body {
 	font-family: $sans;
 	font-size: $font-size;
 	line-height: 145%;
+	background-color: #eee;
 }
 
 p {
 	margin-bottom: 1.3em;
 }
 
-h1, h2, h3, h4 {
-  margin: 1.414em 0 0.5em;
-  line-height: 1.2;
+// h1, h2, h3, h4 {
+//   // margin: 1.414em 0 0.5em;
+//   line-height: 1.45; //1.2
+// }
+
+// h1 {
+//   margin-top: 0;
+//   font-size: 3.998em;
+// }
+
+// h2 {margin-top: 0;font-size: 2.827em;}
+
+// h3 {margin-top: 0;font-size: 1.999em;}
+
+// h4 {margin-top: 0;font-size: 1.414em;}
+
+h1,h2,h3,h4,h5,h6 {
+	margin: 0;
 }
-
-h1 {
-  margin-top: 0;
-  font-size: 3.998em;
-}
-
-h2 {font-size: 2.827em;}
-
-h3 {font-size: 1.999em;}
-
-h4 {font-size: 1.414em;}
 
 .wrapper {
 	padding: $space*3;
+}
+
+.clearfloat {
+	clear: both;
+}
+
+@media (min-width:800px) {
+	.main {
+		width: 50%;
+		margin: 0 25%;
+	}
 }
 
 .svgFlag {
@@ -50,35 +66,26 @@ h4 {font-size: 1.414em;}
 	border: 1px solid #ccc;
 }
 
-.nameDisp {
-	width: 20%;
-	margin-right: 5%;
-	margin-bottom: 5%;
-	display: inline-block;
+// CARDS
+
+.card {
+	margin-bottom: $space*4;
+	display: block;
+	background-color: #fff;
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+	img {
+		padding: 0;
+		border-top-left-radius: 4px;
+		border-top-right-radius: 4px;
+	}
+	& > * {
+		padding: $space*4;
+	}
 }
 
-@media (max-width:800px) {
-	.nameDisp {
-		width: 100%;
-		margin-right: 0;
-		display: block;
-	}
-	.svgFlag {
-		width: 97.5%;
-	}
-	.wrapper {
-		padding: $space;
-	}
-	.search {
-		margin-bottom: $space;
-		.button {
-			display: block;
-			text-align: center;
-			margin: 0;
-			margin-top: $space;
-		}
-	}
-}
+// END CARDS
+
 
 // search
 
@@ -86,12 +93,11 @@ h4 {font-size: 1.414em;}
 	margin-bottom: $space*4;
 }
 
-// .search-icon {
-// 	height: 50px;
-// 	width: 50px;
-// 	display: inline-block;
-// 	vertical-align: bottom;
-// }
+.search-input {
+	font-size: $space;
+	margin: $space 0;
+}
+
 
 // end search
 
@@ -124,6 +130,10 @@ h4 {font-size: 1.414em;}
 	}
 }
 
+.button-search {
+	float: right;
+}
+
 .button--pressed {
 	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
 	transition-delay: 0s;
@@ -140,7 +150,7 @@ h4 {font-size: 1.414em;}
 	border-radius: 50%;
 	display: inline-block;
 	transform: scale(0);
-	transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+	transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 
@@ -149,7 +159,7 @@ h4 {font-size: 1.414em;}
 // tooltips
 
 .tooltip-content {
-	background-color: $blue-dark20;
+	background-color: #616161;
 	color: #fff;
 	font-size: 14px;
 	display: inline-block;
@@ -159,19 +169,37 @@ h4 {font-size: 1.414em;}
 	border-radius: 0.3rem;
 }
 
+
+// Ignoring material design on this one, arrows look better IMO
 .tooltip--up {
-	&::before {
-		display: block;
-		position: relative;
-		text-align: center;
-		margin-left: 2.5rem;
-		content: ' ';
-		width: 0;
-		height: 0;
-		border-left: 0.5em solid #fff;
-		border-right: 0.5em solid #fff;
-		border-bottom: 0.5em solid $blue-dark20;
-	}
+	// &::before {
+	// 	display: block;
+	// 	position: relative;
+	// 	text-align: center;
+	// 	margin-left: 2.5rem;
+	// 	content: ' ';
+	// 	width: 0;
+	// 	height: 0;
+	// 	border-left: 0.5em solid #fff;
+	// 	border-right: 0.5em solid #fff;
+	// 	border-bottom: 0.5em solid #616161;
+	// }
 }
 
 // end tooltips
+
+// start media query
+// TODO: move to a _mobile-theme.scss?
+@media (max-width:800px) {
+	.card {
+		width: 100%;
+		margin-bottom: $space*2;
+
+		& > * {
+			padding: $space;
+		}
+	}
+	.wrapper {
+		padding: $space;
+	}
+}

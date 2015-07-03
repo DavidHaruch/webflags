@@ -41,23 +41,30 @@
 	<div class="wrapper" id="main"> 
 	<!-- the id main is put here beacuse we want content appended here to be wrapped -->
 
-		<div class="search" id="searchContainer">
-			<!-- <div class="search-icon">
-				<object data="svg/ic_search_48px.svg" type="">
-					
-				</object>
-			</div> -->
+		<div class="search card" id="searchContainer">
+		<div class="search-content card-content" id="searchContainer2">
+
+			<h2>Search</h2>
+
 			<input type="text" class="search-input" autocomplete="off" inputmode="latin" id="search">			
-			<button class="button" id="searchButton">
+			<button class="button button-search" id="searchButton">
 			<span class="button-content">
 				search
 			</span>
 			</button>
+
+		<div class="clearfloat"></div>
+		</div>
+		</div>
+
+		<div class="layout-select card">
+		<div class="card-content layout-select-content">
+			Test
+		</div>
 		</div>
 		
 	</div>
 	</main>
-
 	<div onclick="fab();" class="fab totop" id="fab">
 		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><path d="M24 16L12 28l2.83 2.83L24 21.66l9.17 9.17L36 28z" fill="#fff" width="20px" height="20px" style="width:50%;height:50%;margin:25% 25%"/></svg>
 	</div>

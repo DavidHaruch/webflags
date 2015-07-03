@@ -34,6 +34,7 @@ inputTag.addEventListener('mouseenter', function(e){
 	searchTooltip = document.getElementById('searchTooltip');
 	if (!searchTooltip) {
 		searchContainer = document.getElementById('searchContainer');
+		searchContainer2 = document.getElementById('searchContainer2');
 		elem = document.createElement('div');
 		elem.className += 'tooltip ';
 		elem.className += 'tooltip--up ';
@@ -45,7 +46,7 @@ inputTag.addEventListener('mouseenter', function(e){
 		tooltipContent.className += 'tooltip-content';
 		tooltipContent.id = 'tooltipContent';
 
-		searchContainer.appendChild(elem);
+		searchContainer2.appendChild(elem);
 		elem.appendChild(tooltipContent);
 	}
 });

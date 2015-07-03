@@ -40,15 +40,15 @@ module.exports = function(grunt) {
 		},
 
 		cssmin: {
-  			options: {
+			options: {
 				shorthandCompacting: false,
 				roundingPrecision: -1
-  			},
-  			target: {
+			},
+			target: {
 				files: {
-	  				'styles.min.css': 'styles.prefix.css'
+					'styles.min.css': 'styles.prefix.css'
 				}
-  			}
+			}
 		},
 
 		connect: {
@@ -64,10 +64,23 @@ module.exports = function(grunt) {
 			sass: {
 				files: ['sass/*.scss'],
 				tasks: ['sass','autoprefixer','cssmin'],
+				options: {
+					livereload: true,
+				},
 			},
 			js: {
 				files: ['js/dev/*.js'],
 				tasks: ['uglify:js'],
+				options: {
+					livereload: true,
+				},
+			},
+			html: {
+				files: ['*.html'],
+				tasks: ['cssmin'],
+				options: {
+					livereload: true,
+				},
 			}
 		},
 

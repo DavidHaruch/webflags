@@ -193,12 +193,21 @@ function actOnJSON(input) {
 
 		nameDisp = document.createElement('div');
 		nameDisp.id = 'nameDisp' + i;
-		nameDisp.className += 'nameDisp';
-		nameDisp.innerHTML = name;
+		nameDisp.className += 'card';
+
+		nameDispCardContent = document.createElement('div');
+		nameDispCardContent.id = 'nameDispCardContent' + i;
+
+		nameDispTitle = document.createElement("h2");
+		nameDispTitle.id = 'nameDispTitle' + i;
+		nameDispTitle.textContent = name;
+
 
 		document.getElementById('main').appendChild(nameDisp);
-
 		imgMd5(name);
+		nameDisp.appendChild(nameDispCardContent);
+		nameDispCardContent.appendChild(nameDispTitle);
+
 	}
 	return JSON;
 }
