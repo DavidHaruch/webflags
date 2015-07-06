@@ -75,13 +75,40 @@ h1,h2,h3,h4,h5,h6 {
 	background-color: #fff;
 	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
 	border-radius: 4px;
+	animation-name: materialIn;
+	animation-duration: 0.65s;
+	animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	img {
+		animation-name: fadeIn;
+		animation-duration: 1s;
 		padding: 0;
 		border-top-left-radius: 4px;
 		border-top-right-radius: 4px;
 	}
 	& > * {
 		padding: $space*4;
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0.1:
+		filter: grayscale(50%); 
+	}
+	to {
+		opacity: 1:
+		filter: grayscale(0%);	
+	}
+}
+
+@keyframes materialIn {
+	from {
+		opacity: 0;
+		transform: translateY(5rem);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
 

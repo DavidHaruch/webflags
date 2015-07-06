@@ -44,13 +44,24 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   background-color: #fff;
   box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 4px; }
+  border-radius: 4px;
+  animation-name: materialIn;
+  animation-duration: 0.65s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
   .card img {
     padding: 0;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px; }
   .card > * {
     padding: 4rem; }
+
+@keyframes materialIn {
+  from {
+    opacity: 0;
+    transform: translateY(5rem); }
+  to {
+    opacity: 1;
+    transform: translateY(0); } }
 
 .search {
   margin-bottom: 4rem; }

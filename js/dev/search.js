@@ -37,12 +37,14 @@ var search = function (query) {
 		if (elemText.indexOf(query) !== -1) {
 			console.log(elemText);
 			arr.push(elemText);
-			if (arr.length <= 1) {
-				scrollView(elem,300);
+			if (arr.length > 1) {
+				// scrollView(elem,300);
+				console.log("test");
+				console.log(arr.length);
 			}
 		}
 		else if (!elemText.includes(query)) {
-			console.log("nope");
+			// console.log("nope");
 		}
 		else if (query === elem.textContent) {
 			console.log(elem.textContent);
@@ -53,8 +55,13 @@ var search = function (query) {
 	if (arr.length > 1) {
 			console.log(arr);
 			console.log("more than 1");
+			// presentOptions();
 	}
 };
+
+function presentOptions(arr) {
+	console.log(arr);
+}
 
 function scrollView (elemid,delay) {
 	scrollelem = elemid;
