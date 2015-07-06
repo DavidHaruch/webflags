@@ -22,39 +22,6 @@ inputTag.addEventListener('keyup', function(e){
 		console.log('works');
 	}
 });
-inputTag.addEventListener('mouseleave', function(e){
-	setTimeout(function(e){
-		searchTooltip = document.getElementById('searchTooltip');
-		searchTooltip.parentNode.removeChild(searchTooltip);
-	}, 100);
-	// give it a 100ms delay on exit
-});
-
-inputTag.addEventListener('mouseenter', function(e){
-	searchTooltip = document.getElementById('searchTooltip');
-	if (!searchTooltip) {
-		searchContainer = document.getElementById('searchContainer');
-		searchContainer2 = document.getElementById('searchContainer2');
-		elem = document.createElement('div');
-		elem.className += 'tooltip ';
-		elem.className += 'tooltip--up ';
-		elem.className += 'search-tooltip';
-		elem.id = 'searchTooltip';
-
-		tooltipContent = document.createElement('span');
-		tooltipContent.textContent = "type a full or partial country name";
-		tooltipContent.className += 'tooltip-content';
-		tooltipContent.id = 'tooltipContent';
-
-		searchContainer2.appendChild(elem);
-		elem.appendChild(tooltipContent);
-	}
-});
-
-
-// This uses .includes, only supported in very new firefox and chrome, but it is a standard for es6
-
-var scrollDelay = 500;
 
 var search = function (query) {
 
@@ -71,10 +38,7 @@ var search = function (query) {
 			console.log(elemText);
 			arr.push(elemText);
 			if (arr.length <= 1) {
-				// elem.scrollIntoView();
-				// setTimeout(function(){
-					elem.scrollIntoView();
-				// }, scrollDelay);
+				scrollView(elem,300);
 			}
 		}
 		else if (!elemText.includes(query)) {
@@ -82,9 +46,7 @@ var search = function (query) {
 		}
 		else if (query === elem.textContent) {
 			console.log(elem.textContent);
-			// setTimeout(function(){
-				elem.scrollIntoView();
-			// }, scrollDelay);
+			scrollView(elem,300);
 		}
 	}
 	// if there are more than 1 option
@@ -93,3 +55,14 @@ var search = function (query) {
 			console.log("more than 1");
 	}
 };
+
+function scrollView (elemid,delay) {
+	scrollelem = elemid;
+	if (!elemid) {
+		scrollelem = document.getElementById(elemid);
+	}
+	topAmmt = scrollelem.getBoundingClientRect();
+	setTimeout(function(){
+		window.scrollTo(0,(topAmmt.top - 10));
+	}, delay);
+}

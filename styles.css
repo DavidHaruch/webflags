@@ -96,15 +96,49 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(0);
   transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
 
-.tooltip-content {
+.tooltip {
+  position: absolute;
   background-color: #616161;
-  color: #fff;
-  font-size: 14px;
-  display: inline-block;
+  border-radius: 0.25rem;
   font-weight: 700;
+  color: #fff;
+  display: none;
+  padding: 0.25rem 1rem;
   text-align: center;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.3rem; }
+  opacity: 0.0;
+  transition: all 400ms ease;
+  transform: translateY(0.5rem); }
+
+.checkbox {
+  margin: 0;
+  -webkit-appearance: none;
+  height: 2rem;
+  width: 2rem;
+  background-image: url("svg/ic_check_box_outline_blank_48px.svg");
+  margin: 1rem;
+  transition: all 500ms ease; }
+  .checkbox:focus {
+    outline: none; }
+  .checkbox::after {
+    position: absolute;
+    transition: all 500ms ease;
+    content: ' ';
+    width: 4rem;
+    height: 4rem;
+    transform: translate(-1rem, -1rem);
+    border-radius: 50%;
+    background-color: transparent; }
+  .checkbox:active::after {
+    position: absolute;
+    transition: all 500ms ease;
+    content: ' ';
+    width: 4rem;
+    height: 4rem;
+    transform: translate(-1rem, -1rem);
+    border-radius: 50%;
+    background-color: rgba(63, 81, 181, 0.5); }
+  .checkbox:checked {
+    background-image: url("svg/ic_check_box_48px.svg"); }
 
 @media (max-width: 800px) {
   .card {

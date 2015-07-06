@@ -12,6 +12,7 @@ $blue-dark20:  darken($blue,20%);
 
 $purple: #9C27B0; $accent: #9C27B0;
 $purple-light10: lighten(#9C27B0,10%);
+$purple-dark10: darken($purple,10%);
 
 body {
 	font-family: $sans;
@@ -158,35 +159,63 @@ h1,h2,h3,h4,h5,h6 {
 
 // tooltips
 
-.tooltip-content {
+.tooltip {
+	position: absolute;
 	background-color: #616161;
-	color: #fff;
-	font-size: 14px;
-	display: inline-block;
+	border-radius: $space/4;
 	font-weight: 700;
-	text-align: center;	
-	padding: $space/4 $space/2;
-	border-radius: 0.3rem;
-}
-
-
-// Ignoring material design on this one, arrows look better IMO
-.tooltip--up {
-	// &::before {
-	// 	display: block;
-	// 	position: relative;
-	// 	text-align: center;
-	// 	margin-left: 2.5rem;
-	// 	content: ' ';
-	// 	width: 0;
-	// 	height: 0;
-	// 	border-left: 0.5em solid #fff;
-	// 	border-right: 0.5em solid #fff;
-	// 	border-bottom: 0.5em solid #616161;
-	// }
+	color: #fff;
+	display: none;
+	padding: $space/4 $space;
+	text-align: center;
+	opacity: 0.0;
+	transition: all 400ms ease;
+	transform: translateY($space/2);
 }
 
 // end tooltips
+
+// checkbox
+
+.checkbox {
+	margin: 0;
+	-webkit-appearance: none;
+	height: 2rem;
+	width: 2rem;
+	background-image: url("svg/ic_check_box_outline_blank_48px.svg");
+	// background-color: red;
+	margin: $space;
+	transition: all 500ms ease;
+	&:focus {
+		outline: none;
+	}
+	&::after {
+		position: absolute;
+		transition: all 500ms ease;
+		content: ' ';
+		width: 4rem;
+		height: 4rem;
+		transform: translate(-1rem,-1rem);
+		border-radius: 50%;
+		background-color: transparent;
+	}
+	&:active::after {
+		position: absolute;
+		transition: all 500ms ease;
+		content: ' ';
+		width: 4rem;
+		height: 4rem;
+		transform: translate(-1rem,-1rem);
+		border-radius: 50%;
+		background-color: rgba(63,81,181,0.5);
+	}
+	&:checked {
+		background-image: url("svg/ic_check_box_48px.svg");
+		// background-color: blue;
+	}
+}
+
+// end checkbox
 
 // start media query
 // TODO: move to a _mobile-theme.scss?
