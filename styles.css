@@ -49,11 +49,27 @@ h1, h2, h3, h4, h5, h6 {
   animation-duration: 0.65s;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
   .card img {
+    animation-name: fadeIn;
+    animation-duration: 3s;
     padding: 0;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px; }
   .card > * {
     padding: 4rem; }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.1;
+    filter: grayscale(100%) saturate(20%);
+    -webkit-filter: grayscale(100%) saturate(20%); }
+  75% {
+    opacity: 0.9;
+    filter: grayscale(0%) saturate(80%);
+    -webkit-filter: grayscale(0%) saturate(80%); }
+  to {
+    opacity: 1;
+    filter: grayscale(0%) saturate(100%);
+    -webkit-filter: grayscale(0%) saturate(100%); } }
 
 @keyframes materialIn {
   from {
@@ -64,11 +80,43 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(0); } }
 
 .search {
-  margin-bottom: 4rem; }
+  margin-bottom: 4rem;
+  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+  animation-name: materialIn;
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+  .search input {
+    border: none;
+    padding: 5px 9px;
+    padding-left: 5;
+    max-width: 88%;
+    width: 88%;
+    color: #aaa; }
+    .search input:focus {
+      border: none;
+      outline: none; }
 
-.search-input {
-  font-size: 1rem;
-  margin: 1rem 0; }
+@media (max-width: 800px) {
+  .search {
+    margin-bottom: 1.5rem; } }
+
+.search-bar {
+  max-width: 100%;
+  border: 1px solid #bbb inset;
+  background-color: #fff;
+  color: #ccc; }
+
+.search-bar_focus {
+  outline: none;
+  border: 1px solid #4d90fe inset; }
+
+.search-icon {
+  display: inline-block;
+  height: 1rem;
+  width: 5%;
+  vertical-align: middle;
+  padding-left: 9px;
+  transition: all 400ms ease; }
 
 .button {
   color: #fff;
@@ -87,25 +135,6 @@ h1, h2, h3, h4, h5, h6 {
   .button:active {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
     transition-delay: 0s; }
-
-.button-search {
-  float: right; }
-
-.button--pressed {
-  box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-  transition-delay: 0s; }
-
-.button-content {
-  z-index: 0; }
-
-.ripple {
-  position: absolute;
-  z-index: -1;
-  background-color: #606fc7;
-  border-radius: 50%;
-  display: inline-block;
-  transform: scale(0);
-  transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
 
 .tooltip {
   position: absolute;

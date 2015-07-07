@@ -40,30 +40,18 @@
 	<main class="main">
 	<div class="wrapper" id="main"> 
 	<!-- the id main is put here beacuse we want content appended here to be wrapped -->
+	<div class="search">
 
-		<div class="search card" id="searchContainer">
-		<div class="search-content card-content" id="searchContainer2">
-
-			<h2>Search</h2>
-
-			<input type="text" class="search-input tooltipped" autocomplete="off" inputmode="latin" id="search" data-tooltip="Use a full or partial country name">			
-			<button class="button button-search" id="searchButton">
-			<span class="button-content">
-				search
-			</span>
-			</button>
-
-		<div class="clearfloat"></div>
-		</div>
+		<div class="search-bar" id='searchDecorative'>
+			<object class="search-icon" data="svg/ic_search_48px.svg" type="" id="searchIcon">
+			</object>
+			<object class="search-icon" data="svg/ic_arrow_back_48px.svg" type="" id="searchIconAlt" style="display:none">
+			</object>
+			<input type="text" class="search-input" id="search">
 		</div>
 
-		<div class="layout-select card">
-		<div class="card-content layout-select-content">
-			<h2>Layout</h2>
-			<input type="checkbox" class="checkbox tooltipped" data-tooltip="Grid Layout">
-			<input type="checkbox" class="checkbox tooltipped" data-tooltip="Stream Layout">
-		</div>
-		</div>
+	</div>
+
 		
 	</div>
 	</main>
