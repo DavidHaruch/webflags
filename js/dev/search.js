@@ -1,6 +1,8 @@
 var inputTag = document.getElementById('search');
 var searchButton = document.getElementById('searchButton');
 
+var recentSearches = [];
+
 // searchButton.addEventListener('click', function(e){
 // 	search(inputTag.value);
 // });
@@ -8,24 +10,69 @@ inputTag.addEventListener('keydown', function(e){
 	key = e.charCode || e.which;
 	if (key === 13) {
 		search(inputTag.value);
+		recentSearches.push(inputTag.value);
 	}
 });
 inputTag.addEventListener('keyup', function(e){
+	if (inputTag.value === '') {
+		while (searchOptions.firstChild) {
+			searchOptions.removeChild(searchOptions.firstChild);
+		}
+		return false;
+	}
 	key = e.charCode || e.which;
 	if (key === 13) {
 		console.log('enter pressed');
 	}
-	else {
+	else if (key == 8 || key === 46) {
+		searchDisplay("%");
+		searchDisplay(inputTag.value);
+	}
+	else if (key !== 16) {
+		searchDisplay("%");
 		searchDisplay(inputTag.value);
 	}
 });
 
 var searchDisplay = function (query) {
-	if (query === '') {
+	searchOptions = document.getElementById('searchOptions');
+	suggestions = searchOptions.childNodes;
+
+
+	console.log(suggestions);
+
+	if (query === ' ') {
 		return false;
 	}
+	else if (query === '%') {
+		while (searchOptions.firstChild) {
+			searchOptions.removeChild(searchOptions.firstChild);
+		}
+		return false;
+	}
+
+	// possibilities array
 	var poss = [];
+
 	console.log(query);
+
+	for (i=0;i<elemArr.length;i++) {
+		elem = document.getElementById(elemArr[i]);
+		titleid = "nameDispTitle" + i;
+		// console.log(titleid);
+		elemTitle = document.getElementById(titleid);
+		// elemName = elem.textContent;
+		elemName = elemTitle.textContent;
+		if (elemName.includes(query)) {
+			poss.push(elemName);
+		}
+	}
+	console.log(poss);
+	for (i=0;i<poss.length;i++){
+		possElem = document.createElement('div');
+		possElem.textContent = poss[i];
+		searchOptions.appendChild(possElem);
+	}
 
 };
 
@@ -88,32 +135,26 @@ var searchIconAlt = document.getElementById('searchIconAlt');
 inputTag.value = 'Search';
 
 inputTag.addEventListener("focus",function(){
+	searchGetFocus();
+});
+inputTag.addEventListener("blur",function(){
+	searchLoseFocus();
+});
+
+function searchGetFocus () {
 	// on focus add this class, look at sass/_theme.scss:~142
 	searchDecorative.className = 'search-bar search-bar_focus';
 	// clear the input tag from the hint text
 	inputTag.value = '';
 	inputTag.style.color = "#111";
-	searchIcon.style.transform = 'rotate(320deg) translateY(4px)';
-	setTimeout(function(){
-		searchIcon.style.display = "none";
-		searchIcon.style.transform = 'rotate(320deg) translateY(-4px)';
-	}, 400);
-	setTimeout(function(){
-		searchIconAlt.style.display = "inline-block";
-	}, 398);
-});
-inputTag.addEventListener("blur",function(){
-	// searchDecorative.className = 'search-bar';
-	// inputTag.value = 'Search';
-	searchLoseFocus();
-});
+}
 
-function searchLoseFocus (){
+function searchLoseFocus () {
 	searchDecorative.className = 'search-bar';
 	inputTag.value = 'Search';
 	inputTag.style.color = "#aaa";
 	searchIcon.style.display = "inline-block";
 	searchIconAlt.style.display = "none";
-	searchIcon.style.transform = 'none';
+	// searchIcon.style.transform = 'none';
 }
 

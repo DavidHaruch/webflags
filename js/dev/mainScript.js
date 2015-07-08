@@ -186,8 +186,20 @@ function fixedEncodeURIComponent (str) {
 	elemArr.push('nameDisp' + i);
 }
 
+function addCardContent (json) {
+	for (i=0;i<json.length;i++) {
+		capital = document.createElement('div');
+		capital.id = 'CountryCapital' + i;
+		captial.className += 'Country Capital';
+
+		capital.textContent = json[i].capital;
+		nameDispCardContent.appendChild(capital);
+	}
+}
+
 function actOnJSON(input) {
 	var JSON = input;
+	capArr = [];
 	for (i=0;i<JSON.length;i++) {
 		name = JSON[i].name.common;
 
@@ -200,6 +212,7 @@ function actOnJSON(input) {
 
 		nameDispTitle = document.createElement("h2");
 		nameDispTitle.id = 'nameDispTitle' + i;
+		nameDispTitle.className = 'card-content-title';
 		nameDispTitle.textContent = name;
 
 
@@ -207,9 +220,68 @@ function actOnJSON(input) {
 		imgMd5(name);
 		nameDisp.appendChild(nameDispCardContent);
 		nameDispCardContent.appendChild(nameDispTitle);
+		// addCardContent(json);
+
+		capitalText = JSON[i].capital;
+		capArr.push(capitalText);
+
+		lat = JSON[i].latlng[0];
+		lng = JSON[i].latlng[1];
+
+		capitalsFunc(capArr);
+
+		latLng(lat,lng);
+		googleMaps(lat,lng);
 
 	}
 	return JSON;
+}
+
+function latLng (lat,lng) {
+
+	latLngE = document.createElement('div');
+
+	latE = document.createElement('div');
+	latE.textContent = lat + "°";
+	latE.className += 'card-content-lat';
+
+	lngE = document.createElement('div');
+	lngE.textContent = lng + "°";
+	lngE.className += 'card-content-lng';
+
+	contentContainer = document.getElementById('nameDispCardContent'+i);
+	contentContainer.appendChild(latE);
+	contentContainer.appendChild(lngE);
+}
+
+function capitalsFunc (arr) {
+	contentContainer = document.getElementById('nameDispCardContent'+i);
+
+	capitalElem = document.createElement('h3');
+	capitalElem.textContent = arr[i];
+	capitalElem.className += 'card-content-capital';
+
+	clearFloat = document.createElement('div');
+	clearFloat.className = 'clearfloat';
+
+	contentContainer.appendChild(capitalElem);
+	contentContainer.appendChild(clearFloat);
+}
+
+function googleMaps (lat,lng) {
+
+		//make a link to google maps with long and lat
+		mapsElem = document.createElement('a');
+		mapsUrl = "https://www.google.com/maps/place/" + lat + "," + lng + "/@" + lat + "," + lng + ",z12";
+		mapsElem.setAttribute("href", mapsUrl);
+		mapsElem.setAttribute("target", "_blank");
+		mapsElem.textContent = "view on google maps";
+		mapsElem.id = "cardMap";
+		mapsElem.className = "card-content-maps button";
+
+		contentContainer = document.getElementById('nameDispCardContent'+i);
+		contentContainer.appendChild(mapsElem);
+	//}
 }
 
 var addDotsNum = 0;

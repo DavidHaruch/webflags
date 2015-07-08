@@ -5,6 +5,8 @@ $space: 1rem;
 
 $font-size: 16px;
 
+$list-indigo: #e8eaf6, #c5cae9, #9fa8da, #7986cb, #5c6bc0, #3f51b5, #3949ab, #303f9f, #283593, #1a237e, #8c9eff, #536dfe, #3d5afe, #304ffe;
+
 $blue: #3F51B5;
 $blue-light10: lighten($blue,10%);
 $blue-light20: lighten($blue,20%);
@@ -16,6 +18,8 @@ $purple: #9C27B0; $accent: #9C27B0;
 $purple-light10: lighten(#9C27B0,10%);
 $purple-dark10: darken($purple,10%);
 
+$easeInQuart: all 600ms cubic-bezier(0.895, 0.03, 0.685, 0.22);
+
 body {
 	font-family: $sans;
 	font-size: $font-size;
@@ -26,22 +30,6 @@ body {
 p {
 	margin-bottom: 1.3em;
 }
-
-// h1, h2, h3, h4 {
-//   // margin: 1.414em 0 0.5em;
-//   line-height: 1.45; //1.2
-// }
-
-// h1 {
-//   margin-top: 0;
-//   font-size: 3.998em;
-// }
-
-// h2 {margin-top: 0;font-size: 2.827em;}
-
-// h3 {margin-top: 0;font-size: 1.999em;}
-
-// h4 {margin-top: 0;font-size: 1.414em;}
 
 h1,h2,h3,h4,h5,h6 {
 	margin: 0;
@@ -62,16 +50,14 @@ h1,h2,h3,h4,h5,h6 {
 	}
 }
 
-.svgFlag {
-	width: 100%;
-	height: auto;
-	display: block;
-	border: 1px solid #ccc;
-	// filter: grayscale(90%);
-	// -webkit-filter: grayscale(90%);
-}
 
 // CARDS
+
+.card-spacer-extend {
+	padding-bottom: $space;
+	border-bottom: 1px solid #e9e9e9;
+	margin-bottom: $space;
+}
 
 .card {
 	margin-bottom: $space*4;
@@ -85,6 +71,7 @@ h1,h2,h3,h4,h5,h6 {
 	img {
 		animation-name: fadeIn;
 		animation-duration: 3s;
+		animation-timing-function: $easeInQuart;
 		padding: 0;
 		border-top-left-radius: 4px;
 		border-top-right-radius: 4px;
@@ -92,6 +79,61 @@ h1,h2,h3,h4,h5,h6 {
 	& > * {
 		padding: $space*4;
 	}
+	h2 {
+		@extend .card-spacer-extend;
+	}
+	.card-content-capital {
+		color: #222;
+		@extend .card-spacer-extend;
+		&::after {
+			color: #777;
+			content: 'Capital';
+			font-weight: 500;
+			font-size: 0.85em;
+			display: block;
+		}
+	}
+	.card-content-lat,.card-content-lng {
+		font-family: $mono;
+		width: 50%;
+		float: left;
+		// @extend .card-spacer-extend;
+		// padding-bottom: $space;
+		// border-bottom: 1px solid #e9e9e9;
+		margin-bottom: $space;
+		&::after {
+			font-family: $sans;
+			color: #777;
+			content: '';
+			font-weight: 500;
+			font-size: 0.85rem;
+			display: block;	
+			line-height: 100%;
+		}
+	}
+	.card-content-lat {
+		&::after {
+			content: 'lat';
+		}
+	}
+	.card-content-lng {
+		&::after {
+			content: 'long';
+		}
+	}
+	.card-content-maps {
+		display: inline-block;
+		text-decoration: none;
+		clear: both;
+		// @extend .card-spacer-extend;
+	}
+}
+
+.svgFlag {
+	width: 100%;
+	height: auto;
+	display: block;
+	border: 1px solid #ccc;
 }
 
 @keyframes fadeIn {
@@ -123,19 +165,28 @@ h1,h2,h3,h4,h5,h6 {
 	}
 }
 
+@keyframes materialInShort {
+	from {
+		opacity: 0.6;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
 // END CARDS
 
 // search
 
 .search {
 	margin-bottom: $space*4;
-	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
 	animation-name: materialIn;
 	animation-duration: 0.45s;
 	animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	input {
 		border: none;
-		padding: 5px 9px;
+		padding: 1rem 9px;
 		padding-left: 5;
 		max-width: 88%;
 		width: 88%;
@@ -160,6 +211,23 @@ h1,h2,h3,h4,h5,h6 {
 	color: #ccc;
 }
 
+.search-options {
+	background-color: #fff;
+	padding-left: 50px;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	// border-bottom: 1px solid #ddd;
+	transition: all 400ms ease;
+	div {
+		&:first-of-type {
+			padding-top: $space;	
+		}
+		padding-bottom: $space;
+		animation-name: materialInShort;
+		animation-duration: 0.4s;
+	}
+}
+
 .search-bar_focus {
 	outline: none;
 	border: 1px solid #4d90fe inset;
@@ -167,11 +235,11 @@ h1,h2,h3,h4,h5,h6 {
 
 .search-icon {
 	display: inline-block;
-	height: 1rem;
 	width: 5%;
 	vertical-align: middle;
-	padding-left: 9px;
+	padding-left: $space;
 	transition: all 400ms ease;
+	transform: scale(0.6);
 }
 
 // end search
@@ -186,7 +254,7 @@ h1,h2,h3,h4,h5,h6 {
 
     position: relative;
 	padding: $space;
-	margin: 0 $space/2;
+	// margin: 0 $space/2;
 
 	text-transform: uppercase;
 	font-size: $space;
