@@ -217,6 +217,7 @@ function addCardContent (json) {
 function actOnJSON(input) {
 	var JSON = input;
 	capArr = [];
+	currencyArr = [];
 	for (i=0;i<JSON.length;i++) {
 		name = JSON[i].name.common;
 
@@ -242,15 +243,20 @@ function actOnJSON(input) {
 		capitalText = JSON[i].capital;
 		capArr.push(capitalText);
 
+		currencyArr.push(JSON[i].currency);
+
 		lat = JSON[i].latlng[0];
 		lng = JSON[i].latlng[1];
 
 		capitalsFunc(capArr);
+		addCurrency(currencyArr);
+		ajaxHandler(currencyArr);
 
 		latLng(lat,lng);
 		googleMaps(lat,lng);
 
 		wiki(name);
+
 
 	}
 	return JSON;
@@ -271,6 +277,9 @@ function latLng (lat,lng) {
 	contentContainer = document.getElementById('nameDispCardContent'+i);
 	contentContainer.appendChild(latE);
 	contentContainer.appendChild(lngE);
+
+	insertClearBoth(contentContainer);
+
 }
 
 function capitalsFunc (arr) {
@@ -301,6 +310,7 @@ function googleMaps (lat,lng) {
 		mapsUrl = "https://www.google.com/maps/place/" + lat + "," + lng + "/@" + lat + "," + lng + ",z12";
 		mapsElem.setAttribute("href", mapsUrl);
 		mapsElem.setAttribute("target", "_blank");
+		mapsElem.setAttribute("data-ripple-color", "red");
 		mapsElem.textContent = "google maps";
 		mapsElem.id = "cardMap";
 		mapsElem.className = "card-content-maps button-flat";

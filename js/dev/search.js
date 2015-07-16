@@ -143,14 +143,14 @@ inputTag.addEventListener("blur",function(){
 
 function searchGetFocus () {
 	// on focus add this class, look at sass/_theme.scss:~142
-	searchDecorative.className = 'search-bar search-bar_focus';
+	searchDecorative.className = 'search-bar search-bar_focus rippled';
 	// clear the input tag from the hint text
 	inputTag.value = '';
 	inputTag.style.color = "#111";
 }
 
 function searchLoseFocus () {
-	searchDecorative.className = 'search-bar';
+	searchDecorative.className = 'search-bar rippled';
 	inputTag.value = 'Search';
 	inputTag.style.color = "#aaa";
 	searchIcon.style.display = "inline-block";

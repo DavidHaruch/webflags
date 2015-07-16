@@ -54,143 +54,14 @@ h1,h2,h3,h4,h5,h6 {
 	}
 }
 
-
-// CARDS
-
-.card-spacer-extend {
-	padding-bottom: $space;
-	border-bottom: 1px solid #e9e9e9;
-	margin-bottom: $space;
-}
-
-.card {
-	margin-bottom: $space*4;
-	display: block;
-	background-color: #fff;
-	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
-	border-radius: 4px;
-	animation-name: materialIn;
-	animation-duration: 0.65s;
-	animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-	img {
-		animation-name: fadeIn;
-		animation-duration: 3s;
-		animation-timing-function: $easeInQuart;
-		padding: 0;
-		border-top-left-radius: 4px;
-		border-top-right-radius: 4px;
-	}
-	& > * {
-		padding: $space*3 $space*3 $space;
-	}
-	h2 {
-		@extend .card-spacer-extend;
-		padding-bottom: $space*2;
-		font-size: 5vw;
-		line-height: 5vw;
-	}
-	.card-content-capital {
-		color: #222;
-		@extend .card-spacer-extend;
-		&::after {
-			color: #777;
-			content: 'Capital';
-			font-weight: 500;
-			font-size: 0.85em;
-			display: block;
-		}
-	}
-	.card-content-lat,.card-content-lng {
-		font-family: $mono;
-		width: 50%;
-		float: left;
-		// @extend .card-spacer-extend;
-		// padding-bottom: $space;
-		// border-bottom: 1px solid #e9e9e9;
-		margin-bottom: $space;
-		&::after {
-			font-family: $sans;
-			color: #777;
-			content: '';
-			font-weight: 500;
-			font-size: 0.85rem;
-			display: block;	
-			line-height: 100%;
-		}
-	}
-	.card-content-lat {
-		&::after {
-			content: 'lat';
-		}
-	}
-	.card-content-lng {
-		&::after {
-			content: 'long';
-		}
-	}
-	.card-content-maps {
-		display: inline-block;
-		text-decoration: none;
-		clear: both;
-		// @extend .card-spacer-extend;
-	}
-}
-
-.svgFlag {
-	width: 100%;
-	height: auto;
-	display: block;
-	border: 1px solid #ccc;
-}
-
-@keyframes fadeIn {
-	from {
-		opacity: 0.1;
-		filter: grayscale(100%) saturate(20%); 
-		-webkit-filter: grayscale(100%) saturate(20%);
-	}
-	75% {
-		opacity: 0.9;
-		filter: grayscale(0%) saturate(80%);	
-		-webkit-filter: grayscale(0%) saturate(80%);
-	}
-	to {
-		opacity: 1;
-		filter: grayscale(0%) saturate(100%);	
-		-webkit-filter: grayscale(0%) saturate(100%);
-	}
-}
-
-@keyframes materialIn {
-	from {
-		opacity: 0;
-		transform: translateY(5rem);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@keyframes materialInShort {
-	from {
-		opacity: 0.6;
-	}
-	to {
-		opacity: 1;
-	}
-}
-
-// END CARDS
-
 // search
 
 .search {
 	margin-bottom: $space*2;
-	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
 	animation-name: materialIn;
 	animation-duration: 0.45s;
 	animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+	background-color: transparent;
 	input {
 		border: none;
 		padding: 1rem 9px;
@@ -211,6 +82,7 @@ h1,h2,h3,h4,h5,h6 {
 	border: 1px solid #bbb inset;
 	background-color: #fff;
 	color: #ccc;
+	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.25);
 }
 
 .search-options {
@@ -218,7 +90,8 @@ h1,h2,h3,h4,h5,h6 {
 	padding-left: 50px;
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
-	// border-bottom: 1px solid #ddd;
+	// border-bottom: 1px solid #ccc;
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2);
 	transition: all 400ms ease;
 	div {
 		&:first-of-type {
@@ -264,7 +137,6 @@ h1,h2,h3,h4,h5,h6 {
 
     position: relative;
 	padding: $space;
-	// margin: 0 $space/2;
 
 	text-transform: uppercase;
 	font-size: $space;
@@ -283,6 +155,7 @@ h1,h2,h3,h4,h5,h6 {
 	}
 }
 
+
 .button-flat {
 	
 	display: inline-block;
@@ -292,7 +165,6 @@ h1,h2,h3,h4,h5,h6 {
 	padding: $space;
 	margin: $space/2 $space/4;
 
-
 	color: $blue300;
 
 	text-decoration: none;
@@ -300,8 +172,13 @@ h1,h2,h3,h4,h5,h6 {
 	font-weight: 700;
 	font-size: $space;
 	line-height: $space;
+
+	background-color: #fff;
+
+	transition: all 300ms ease;
+
 	&:hover {
-		background-color: #ddd;
+		background-color: #eee;
 	}
 }
 
@@ -325,47 +202,20 @@ h1,h2,h3,h4,h5,h6 {
 
 // end tooltips
 
-// checkbox
+// ripple css
 
-.checkbox {
-	margin: 0;
-	-webkit-appearance: none;
-	height: 2rem;
-	width: 2rem;
-	background-image: url("svg/ic_check_box_outline_blank_48px.svg");
-	// background-color: red;
-	margin: $space;
-	transition: all 500ms ease;
-	&:focus {
-		outline: none;
-	}
-	&::after {
-		position: absolute;
-		transition: all 500ms ease;
-		content: ' ';
-		width: 4rem;
-		height: 4rem;
-		transform: translate(-1rem,-1rem);
-		border-radius: 50%;
-		background-color: transparent;
-	}
-	&:active::after {
-		position: absolute;
-		transition: all 500ms ease;
-		content: ' ';
-		width: 4rem;
-		height: 4rem;
-		transform: translate(-1rem,-1rem);
-		border-radius: 50%;
-		background-color: rgba(63,81,181,0.5);
-	}
-	&:checked {
-		background-image: url("svg/ic_check_box_48px.svg");
-		// background-color: blue;
-	}
+.rippled {
+	overflow: hidden;
 }
 
-// end checkbox
+.ripple {
+	position: relative;
+	background-color: rgba(0,0,0,0.1);
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+// ripple end
 
 // start media query
 // TODO: move to a _mobile-theme.scss?

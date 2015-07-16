@@ -11,6 +11,7 @@ function wiki (name) {
 
 	wikiElem = document.createElement('a');
 	wikiElem.setAttribute('href', url);
+	mapsElem.setAttribute("data-ripple-color", "red");
 	wikiElem.className = 'button-flat';
 	wikiElem.textContent = 'wikipedia';
 
