@@ -253,7 +253,7 @@ function actOnJSON(input) {
 		ajaxHandler(currencyArr);
 
 		latLng(lat,lng);
-		googleMaps(lat,lng);
+		googleMaps(name,lat,lng);
 
 		wiki(name);
 
@@ -302,12 +302,12 @@ function insertClearBoth (parent) {
 	parent.appendChild(cb);
 }
 
-function googleMaps (lat,lng) {
+function googleMaps (name,lat,lng) {
 
 		//make a link to google maps with long and lat
 
 		mapsElem = document.createElement('a');
-		mapsUrl = "https://www.google.com/maps/place/" + lat + "," + lng + "/@" + lat + "," + lng + ",z12";
+		mapsUrl = "https://www.google.com/maps/place/" + name + "/@" + lat + "," + lng + ",z12";
 		mapsElem.setAttribute("href", mapsUrl);
 		mapsElem.setAttribute("target", "_blank");
 		mapsElem.setAttribute("data-ripple-color", "red");
